@@ -47,8 +47,6 @@ class OggConan(ConanFile):
     def source(self):
         tools.get(**self.conan_data["sources"][self.version])
         os.rename("libogg-{}".format(self.version), self.source_subfolder)
-        for patch in self.conan_data["patches"][self.version]:
-            tools.patch(**patch)
 
     def _configure_cmake(self):
         if self._cmake:
