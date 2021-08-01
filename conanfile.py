@@ -6,7 +6,6 @@ import os
 # Note: adapted from https://github.com/conan-io/conan-center-index/blob/master/recipes/ogg/all/conanfile.py
 class OggConan(ConanFile):
     name = 'ogg'
-    version = '1.3.4'
     description = 'Reference implementation of the Ogg media container'
     homepage = 'https://github.com/xiph/ogg'
     license = 'BSD-2-Clause'
@@ -45,8 +44,7 @@ class OggConan(ConanFile):
         return "_build"
 
     def source(self):
-        tools.get(**self.conan_data["sources"][self.version])
-        os.rename("libogg-{}".format(self.version), self.source_subfolder)
+        tools.get(**self.conan_data["sources"][self.version], destination=self.source_subfolder, strip_root=True)
 
     def _configure_cmake(self):
         if self._cmake:
