@@ -17,8 +17,6 @@ class OggConan(ConanFile):
     options = {'shared': [True, False], 'fPIC': [True, False]}
     default_options = {'shared': False, 'fPIC': True}
 
-    build_policy = 'missing'
-
     exports_sources = ['CMakeLists.txt', 'patches/*']
 
     _cmake = None
